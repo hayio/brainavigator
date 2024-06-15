@@ -80,7 +80,7 @@ export class PostProcessorForceGraphView extends ForceGraphView<
       this as typeof this.forceGraph.view,
       getNewLocalGraph(this.plugin)
     );
-    // post process graph will not have 3d graph
+    // post process graph will not have graph
     //  setting manager init view
     // this.settingManager.initNewView(true);
   }

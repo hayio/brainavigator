@@ -14,6 +14,7 @@ import { PluginSettingManager } from "@/SettingManager";
 import { GraphType } from "@/SettingsSchemas";
 import type { BaseForceGraphView } from "@/views/graph/forceview/ForceGraphView";
 import { LocalGraphItemView } from "@/views/graph/LocalGraphItemView";
+import { ExampleView } from "@/views/ExampleView";
 import { ForceGraphViewMarkdownRenderChild } from "@/views/graph/ForceGraphViewMarkdownRenderChild";
 
 export default class ForceGraphPlugin extends Plugin implements HoverParent {
@@ -89,6 +90,10 @@ export default class ForceGraphPlugin extends Plugin implements HoverParent {
     // register local view
     this.registerView(config.viewType.local, (leaf) => {
       return new LocalGraphItemView(leaf, this);
+    });
+
+    this.registerView("aa", (leaf) => {
+      return new ExampleView(leaf);
     });
 
     // register markdown code block processor
@@ -200,7 +205,7 @@ export default class ForceGraphPlugin extends Plugin implements HoverParent {
 
     const leaf = this.app.workspace.getLeaf("split");
     await leaf.setViewState({
-      type: config.viewType.local,
+      type: "aa",
       active: true,
     });
   };
