@@ -84,7 +84,7 @@ const traverseNode = (
 };
 
 export const loadImagesForGraph = async (plugin: ForceGraphPlugin, graph: Graph) => {
-  console.info("Loading images...");
+  console.debug("Loading images...");
   const imageLoad = graph.nodes.map(async (node) => {
     // console.info(`try image ${node.path}... ${node.imagePath}`);
     if (node.imagePath && !node.image) {
@@ -193,16 +193,10 @@ export const getNewLocalGraph = (
       return true;
     });
 
-  const parentNodes = graph.filterNodes((node: Node) => {
-    return node.isParentOf(centerFilePath);
-  });
-
-  function applyToConsecutivePairs<T>(arr: T[], func: (a: T, b: T) => void): void {
-    for (let i = 0; i < arr.length - 1; i++) {
-      func(arr[i], arr[i + 1]);
-    }
-  }
-
+  // const parentNodes = graph.filterNodes((node: Node) => {
+  //   return node.isParentOf(centerFilePath);
+  // });
+  //
   // parents linked together
   // if (parentNodes.length > 1) {
   //   applyToConsecutivePairs(parentNodes, (n1, n2) => {
